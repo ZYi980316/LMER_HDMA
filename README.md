@@ -11,6 +11,8 @@ High-dimensional mediation analysis with a random intercept using **lme4** for `
 - Combine p-values via `max` (default) or **Fisher's method**.
 - Optional **parallel** alpha-fitting via `foreach`/`doParallel`.
 
+## Uasage
+
 library(lme4); library(hdi)
 
 set.seed(1)  
