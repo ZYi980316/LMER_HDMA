@@ -13,18 +13,18 @@ High-dimensional mediation analysis with a random intercept using **lme4** for `
 
 library(lme4); library(hdi)
 
-set.seed(1)
-n <- 200; p <- 500; G <- 20
-group <- sample(letters[1:G], n, replace = TRUE)
-X <- rnorm(n)
+set.seed(1)  
+n <- 200; p <- 500; G <- 20  
+group <- sample(letters[1:G], n, replace = TRUE)  
+X <- rnorm(n)  
 
-# mediators with a few true signals
+# mediators with a few true signals  
 M <- matrix(rnorm(n*p), n, p)  
 colnames(M) <- paste0("M", 1:p)  
 M[,1] <- 0.5*X + rnorm(n)  
 M[,2] <- -0.6*X + rnorm(n)  
 
-# outcome (Gaussian)  
+# outcome (Gaussian)    
 beta <- c(0.8, -0.9, rep(0, p-2))  
 Y_lin <- 0.7*X + M %*% beta + rnorm(n, sd = 1)  
 Y <- as.numeric(Y_lin)  
@@ -33,8 +33,8 @@ fit <- lmer_hdma(
   X = X, Y = Y, M = M, group = group,
   family = "gaussian", method = "lasso",
   topN = NULL, parallel = FALSE, verbose = TRUE, seed = 123
-)
+)  
 
-str(fit$results)
-head(fit$results[order(fit$results$p_joint), ], 10)
+str(fit$results)  
+head(fit$results[order(fit$results$p_joint), ], 10)  
 
