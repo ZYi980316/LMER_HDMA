@@ -11,11 +11,6 @@ High-dimensional mediation analysis with a random intercept using **lme4** for `
 - Combine p-values via `max` (default) or **Fisher's method**.
 - Optional **parallel** alpha-fitting via `foreach`/`doParallel`.
 
-## Installation
-```r
-# install.packages(c("devtools"))
-# devtools::install_github("ZYi980316/lmer_hdma")
-
 library(lme4); library(hdi)
 
 set.seed(1)
